@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import styles from "../css/user.module.css";
@@ -31,9 +32,9 @@ const UserItem = ({
 
   return (
     <div className={`card shadow-sm mb-5 bg-white rounded ${styles.cardhover}`}>
-      <a target="_blank" rel="noopener noreferrer" href={html_url}>
+      <Link to={`/Profile/:${login}`}>
         <img src={avatar_url} className="card-img-top" alt="..." />
-      </a>
+      </Link>
       <div className="card-body">
         <h5 className="card-title">
           {login} ({type})
@@ -71,14 +72,9 @@ const UserItem = ({
         >
           Github
         </a>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href={url}
-          className="card-link"
-        >
-          Repos
-        </a>
+        <Link to={`/Profile/:${login}`} className="card-link">
+          Profile
+        </Link>
       </div>
     </div>
   );

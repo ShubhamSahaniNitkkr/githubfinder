@@ -12,7 +12,7 @@ export class AboutUs extends Component {
         </p>
         <hr className="my-4" />
         <p>This is still in Development Stage, More feature to come.</p>
-        <a className="btn btn-primary btn-lg" href="#" role="button">
+        <a className="btn btn-primary btn-lg" href="!#" role="button">
           Free Free to Contact. Design and Developed By
           {process.env.REACT_APP_MY_NAME}
         </a>
