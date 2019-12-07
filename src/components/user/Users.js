@@ -4,29 +4,6 @@ import UserItem from "./UserItem";
 import loading_url from "../../imgs/loading.gif";
 
 const Users = ({ users, loading }) => {
-  // state = {
-  //   users: [
-  //     {
-  //       Name: "Shubham Sunny1",
-  //       Age: "25",
-  //       Avatar:
-  //         "https://avatars0.githubusercontent.com/u/20963383?s=400&u=7fafd64df09ed08222527d35a9f29f74d2427d5e&v=4",
-  //       Info:
-  //         "Graduated from NIT kurukshetra with Information Technology stream.Frontend Developer at Tolexo india Pvt. ltd .(current)",
-  //       Github_Profile: "https://github.com/ShubhamSahaniNitkkr"
-  //     },
-  //     {
-  //       Name: "Shubham Sunny2",
-  //       Age: "25",
-  //       Avatar:
-  //         "https://avatars0.githubusercontent.com/u/20963383?s=400&u=7fafd64df09ed08222527d35a9f29f74d2427d5e&v=4",
-  //       Info:
-  //         "Graduated from NIT kurukshetra with Information Technology stream.Frontend Developer at Tolexo india Pvt. ltd .(current)",
-  //       Github_Profile: "https://github.com/ShubhamSahaniNitkkr"
-  //     },
-  //   ]
-  // };
-  // render() {
   return (
     <div className="container-fluid p-5 mt-5">
       {loading ? (
@@ -45,7 +22,6 @@ const Users = ({ users, loading }) => {
       )}
     </div>
   );
-  // }
 };
 
 Users.prototype = {
