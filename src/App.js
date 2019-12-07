@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./components/layout/Navbar";
@@ -6,88 +6,70 @@ import Users from "./components/user/Users";
 import Profile from "./components/user/Profile";
 import Aboutus from "./components/pages/AboutUs";
 
-class App extends Component {
-  state = {
-    users: [],
-    userProfile: {},
-    loading: false
-  };
+const App = () => {
+  const [users, setusers] = useState([]);
+  const [userProfile, setuserProfile] = useState({});
+  const [loading, setloading] = useState(false);
 
-  async componentDidMount() {
-    this.setState({
-      loading: true
-    });
-
-    const res = await axios.get(`https://api.github.com/users`);
-
-    this.setState({
-      users: res.data,
-      loading: false
-    });
+  async function fethusers() {
+    setloading(true);
+    let res = await axios.get(`https://api.github.com/users`);
+    setusers(res.data);
+    setloading(false);
   }
 
-  searchUsers = async text => {
-    this.setState({
-      loading: true
-    });
+  useEffect(() => {
+    fethusers();
+    // eslint-disable-next-line
+  }, []);
 
+  const searchUsers = async text => {
+    setloading(true);
     const res = await axios.get(
       `https://api.github.com/search/users?q=${text}`
     );
-
-    this.setState({
-      users: res.data.items,
-      loading: false
-    });
+    setusers(res.data.items);
+    setloading(false);
   };
 
-  getUserProfile = async username => {
-    this.setState({
-      loading: true
-    });
-
+  const getUserProfile = async username => {
+    setloading(true);
     const res = await axios.get(
       `https://api.github.com/search/users?q=${
         username.indexOf(":") > -1 ? username.replace(":", "") : username
       }`
     );
-    this.setState({
-      userProfile: res.data.items[0],
-      loading: false
-    });
+    setuserProfile(res.data.items[0]);
+    setloading(false);
   };
 
-  render() {
-    return (
-      <Router>
-        <div className="App">
-          <Navbar title="Github Finder" searchUsers={this.searchUsers} />
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={props => (
-                <Users users={this.state.users} loading={this.state.loading} />
-              )}
-            />
-            <Route
-              exact
-              path="/Profile/:username"
-              render={props => (
-                <Profile
-                  {...props}
-                  getUserProfile={this.getUserProfile}
-                  profile={this.state.userProfile}
-                  loading={this.state.loading}
-                />
-              )}
-            />
-            <Route exact path="/AboutUs" component={Aboutus} />
-          </Switch>
-        </div>
-      </Router>
-    );
-  }
-}
+  return (
+    <Router>
+      <div className="App">
+        <Navbar title="Github Finder" searchUsers={searchUsers} />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={props => <Users users={users} loading={loading} />}
+          />
+          <Route
+            exact
+            path="/Profile/:username"
+            render={props => (
+              <Profile
+                {...props}
+                getUserProfile={getUserProfile}
+                profile={userProfile}
+                loading={loading}
+              />
+            )}
+          />
+          <Route exact path="/AboutUs" component={Aboutus} />
+        </Switch>
+      </div>
+    </Router>
+  );
+};
 
 export default App;
