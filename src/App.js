@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./components/layout/Navbar";
 import Users from "./components/user/Users";
+import Aboutus from "./components/pages/AboutUs";
 
 class App extends Component {
   state = {
@@ -39,11 +41,21 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        {/* {process.env.REACT_APP_MY_NAME} */}
-        <Navbar title="Github Finder" searchUsers={this.searchUsers} />
-        <Users users={this.state.users} loading={this.state.loading} />
-      </div>
+      <Router>
+        <div className="App">
+          <Navbar title="Github Finder" searchUsers={this.searchUsers} />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={props => (
+                <Users users={this.state.users} loading={this.state.loading} />
+              )}
+            />
+            <Route exact path="/AboutUs" component={Aboutus} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
