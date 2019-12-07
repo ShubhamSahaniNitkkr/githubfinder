@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 class Navbar extends Component {
@@ -13,7 +14,8 @@ class Navbar extends Component {
   };
 
   static propTypes = {
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    searchUsers: PropTypes.func.isRequired
   };
 
   onChange = e => {
@@ -30,7 +32,7 @@ class Navbar extends Component {
         function() {
           this.setState({ errorpage: false });
         }.bind(this),
-        1000
+        1500
       );
     }
   };
@@ -39,17 +41,17 @@ class Navbar extends Component {
     return (
       <React.Fragment>
         {this.state.errorpage && (
-          <div class="alert alert-danger mt-5" role="alert">
+          <div className="alert alert-danger mt-5" role="alert">
             Please specify the user name.
           </div>
         )}
 
         <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-          <a className="navbar-brand text-info" href="!#">
+          <Link className="navbar-brand text-info" to="/">
             <i className="fas fa-user-circle fa-lg"></i>
             &nbsp;
             {this.props.title}
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -63,12 +65,19 @@ class Navbar extends Component {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav">
+              <li className="nav-item ">
+                <Link className="nav-link" to="AboutUs">
+                  About us
+                </Link>
+              </li>
+            </ul>
             <form
-              className="form-inline my-2 my-lg-0 ml-auto col-md-12"
+              className="form-inline my-2 my-lg-0 ml-auto col-md-10"
               onSubmit={this.onSubmit}
             >
               <input
-                className="form-control mr-sm-2 col-md-9 ml-auto"
+                className="form-control mr-sm-2 col-md-8 ml-auto"
                 type="search"
                 placeholder="Enter Name"
                 aria-label="Search"
