@@ -6,6 +6,8 @@ import Users from "./components/user/Users";
 import Profile from "./components/user/Profile";
 import Aboutus from "./components/pages/AboutUs";
 
+import GithubState from "./context/github_finder/actions";
+
 const App = () => {
   const [users, setusers] = useState([]);
   const [userProfile, setuserProfile] = useState({});
@@ -44,31 +46,33 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <div className="App">
-        <Navbar title="Github Finder" searchUsers={searchUsers} />
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={props => <Users users={users} loading={loading} />}
-          />
-          <Route
-            exact
-            path="/Profile/:username"
-            render={props => (
-              <Profile
-                {...props}
-                getUserProfile={getUserProfile}
-                profile={userProfile}
-                loading={loading}
-              />
-            )}
-          />
-          <Route exact path="/AboutUs" component={Aboutus} />
-        </Switch>
-      </div>
-    </Router>
+    <GithubState>
+      <Router>
+        <div className="App">
+          <Navbar title="Github Finder" searchUsers={searchUsers} />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={props => <Users users={users} loading={loading} />}
+            />
+            <Route
+              exact
+              path="/Profile/:username"
+              render={props => (
+                <Profile
+                  {...props}
+                  getUserProfile={getUserProfile}
+                  profile={userProfile}
+                  loading={loading}
+                />
+              )}
+            />
+            <Route exact path="/AboutUs" component={Aboutus} />
+          </Switch>
+        </div>
+      </Router>
+    </GithubState>
   );
 };
 
