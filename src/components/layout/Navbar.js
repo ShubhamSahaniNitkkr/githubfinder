@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import GithubContext from "../../context/github_finder/context";
 
-const Navbar = ({ searchUsers, title }) => {
+const Navbar = ({ title }) => {
+  const githubContext = useContext(GithubContext);
   const [searchUserText, setsearchUserText] = useState("");
   const [errorpage, seterrorpage] = useState(false);
 
@@ -13,7 +15,7 @@ const Navbar = ({ searchUsers, title }) => {
   const onSubmit = e => {
     e.preventDefault();
     if (searchUserText !== "") {
-      searchUsers(searchUserText);
+      githubContext.searchUsers(searchUserText);
     } else {
       seterrorpage(true);
       setTimeout(function() {
