@@ -6,7 +6,7 @@ import Profile from "./components/user/Profile";
 import Aboutus from "./components/pages/AboutUs";
 import NotFound from "./components/pages/NotFound";
 
-import GithubState from "./context/github_finder/actions";
+import GithubState from "./context/github_finder/GFactions";
 
 const App = () => {
   return (

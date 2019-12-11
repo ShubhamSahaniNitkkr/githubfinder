@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import axios from "axios";
-import GFcontext from "./context";
-import GFreducer from "./reducer";
+import GFcontext from "./GFcontext";
+import GFreducer from "./GFreducer";
 import { GET_USERS, GET_PROFILE, SET_LOADING } from "../Types";
 
 const GFaction = props => {

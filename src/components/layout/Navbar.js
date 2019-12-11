@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import GithubContext from "../../context/github_finder/context";
+import GithubContext from "../../context/github_finder/GFcontext";
 
 const Navbar = ({ title }) => {
   const githubContext = useContext(GithubContext);
