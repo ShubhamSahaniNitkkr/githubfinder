@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import styles from "../css/user.module.css";
+import styles from "../CSS/UserCSS.module.css";
 
 const UserItem = ({
   user: {

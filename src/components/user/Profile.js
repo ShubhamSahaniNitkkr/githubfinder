@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "./node_modules/react";
 import loading_url from "../../imgs/loading.gif";
 import GithubContext from "../../context/github_finder/GFcontext";
 
