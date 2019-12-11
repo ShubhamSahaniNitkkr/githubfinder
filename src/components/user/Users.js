@@ -1,9 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useEffect, useContext } from "react";
+import GithubContext from "../../context/github_finder/context";
 import UserItem from "./UserItem";
 import loading_url from "../../imgs/loading.gif";
 
-const Users = ({ users, loading }) => {
+const Users = () => {
+  const githubContext = useContext(GithubContext);
+  const { loading, users, fethusers } = githubContext;
+  useEffect(() => {
+    fethusers();
+    //eslint-disable-next-line
+  }, []);
+
   return (
     <div className="container-fluid p-5 mt-5">
       {loading ? (
@@ -22,34 +29,6 @@ const Users = ({ users, loading }) => {
       )}
     </div>
   );
-};
-
-Users.prototype = {
-  users: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired
-};
-
-Users.defaultProps = {
-  users: [
-    {
-      login: "mojombo",
-      id: 1,
-      node_id: "MDQ6VXNlcjE=",
-      avatar_url: "https://avatars0.githubusercontent.com/u/1?v=4",
-      gravatar_id: "",
-      url: "https://api.github.com/users/mojombo",
-      html_url: "https://github.com/mojombo",
-      followers_url: "https://api.github.com/users/mojombo/followers",
-      following_url:
-        "https://api.github.com/users/mojombo/following{/other_user}",
-      gists_url: "https://api.github.com/users/mojombo/gists{/gist_id}",
-      starred_url:
-        "https://api.github.com/users/mojombo/starred{/owner}{/repo}",
-      subscriptions_url: "https://api.github.com/users/mojombo/subscriptions",
-      organizations_url: "https://api.github.com/users/mojombo/orgs"
-    }
-  ],
-  loading: false
 };
 
 export default Users;

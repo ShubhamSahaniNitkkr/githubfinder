@@ -1,13 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import loading_url from "../../imgs/loading.gif";
+import GithubContext from "../../context/github_finder/context";
 
-const Profile = ({ profile, getUserProfile, loading, match }) => {
+const Profile = ({ match }) => {
+  const githubContext = useContext(GithubContext);
+  const { getUserProfile, userProfile, loading } = githubContext;
   useEffect(() => {
     getUserProfile(match.params.username);
     //eslint-disable-next-line
   }, []);
 
-  const { login, id, avatar_url, html_url, repos_url, site_admin } = profile;
+  const {
+    login,
+    id,
+    avatar_url,
+    html_url,
+    repos_url,
+    site_admin
+  } = userProfile;
   return (
     <div className="container-fluid p-5 mt-5">
       {loading ? (
