@@ -4,13 +4,6 @@ import GFcontext from "./context";
 import GFreducer from "./reducer";
 import { GET_USERS, GET_PROFILE, SET_LOADING } from "../Types";
 
-let githubclientid, githubclientsecret;
-if (process.env.NODE_ENV != "production") {
-  githubclientid = process.env.REACT_APP_MY_NAME_IN_PRO;
-} else {
-  githubclientid = process.env.REACT_APP_MY_NAME;
-}
-
 const GFaction = props => {
   const initialState = {
     users: [],
