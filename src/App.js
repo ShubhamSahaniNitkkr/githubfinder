@@ -15,8 +15,17 @@ const App = () => {
         <div className="App">
           <Navbar title="Github Finder" />
           <Switch>
-            <Route exact path="/" component={Users} />
-            <Route exact path="/AboutUs" component={Aboutus} />
+            <Route exact path="/Home" component={Users} />
+            <Route
+              exact
+              path="/Aboutus"
+              render={props => (
+                <React.Fragment>
+                  <Navbar title="Github Finder" />
+                  <Aboutus />
+                </React.Fragment>
+              )}
+            />
             <Route exact path="/Profile/:username" component={Profile} />
             <Route component={NotFound} />
           </Switch>
