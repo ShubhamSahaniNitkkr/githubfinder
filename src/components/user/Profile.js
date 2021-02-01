@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import loading_url from "../../imgs/loading.gif";
-import GithubContext from "../../context/github_finder/context";
+import GithubContext from "../../context/github_finder/GFcontext";
 
 const Profile = ({ match }) => {
   const githubContext = useContext(GithubContext);

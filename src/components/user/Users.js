@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
-import GithubContext from "../../context/github_finder/context";
-import UserItem from "./UserItem";
+import GithubContext from "../../context/github_finder/GFcontext";
+import UserItem from "./Item";
 import loading_url from "../../imgs/loading.gif";
 
 const Users = () => {

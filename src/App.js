@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navbar from "./components/layout/Navbar";
-import Users from "./components/user/Users";
-import Profile from "./components/user/Profile";
-import Aboutus from "./components/pages/AboutUs";
-import NotFound from "./components/pages/NotFound";
+import Navbar from "./components/Layouts/Navbar";
+import Users from "./components/User/Users";
+import Profile from "./components/User/Profile";
+import Aboutus from "./components/Pages/AboutUs";
+import NotFound from "./components/Pages/NotFound";
 
-import GithubState from "./context/github_finder/actions";
+import GithubState from "./context/github_finder/GFactions";
 
 const App = () => {
   return (
@@ -15,8 +15,17 @@ const App = () => {
         <div className="App">
           <Navbar title="Github Finder" />
           <Switch>
-            <Route exact path="/" component={Users} />
-            <Route exact path="/AboutUs" component={Aboutus} />
+            <Route exact path="/Home" component={Users} />
+            <Route
+              exact
+              path="/Aboutus"
+              render={props => (
+                <React.Fragment>
+                  <Navbar title="Github Finder" />
+                  <Aboutus />
+                </React.Fragment>
+              )}
+            />
             <Route exact path="/Profile/:username" component={Profile} />
             <Route component={NotFound} />
           </Switch>
