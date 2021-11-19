@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Users from "./components/user/Users";
 import Profile from "./components/user/Profile";
@@ -14,12 +14,12 @@ const App = () => {
       <Router>
         <div className="App">
           <Navbar title="Github Finder" />
-          <Switch>
-            <Route exact path="/" component={Users} />
-            <Route exact path="/AboutUs" component={Aboutus} />
-            <Route exact path="/Profile/:username" component={Profile} />
-            <Route component={NotFound} />
-          </Switch>
+          <Routes>
+            <Route exact path="/" element={<Users/>} />
+            <Route exact path="/AboutUs" element={<Aboutus/>} />
+            <Route exact path="/Profile/:username" element={<Profile/>} />
+            <Route element={<NotFound/>} />
+          </Routes>
         </div>
       </Router>
     </GithubState>
