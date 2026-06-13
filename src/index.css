@@ -1,4 +1,22 @@
+*, *::before, *::after { box-sizing: border-box; }
+img { max-width: 100%; height: auto; }
+body { overflow-x: hidden; }
+@media (max-width: 768px) { .container { padding: 0 12px; } }
+
 body {
   font-family: "Source Sans Pro", sans-serif;
   background: #e5eff1;
+}
+
+@media (max-width: 768px) {
+  .container-fluid.p-5 {
+    padding: 1rem !important;
+    margin-top: 4rem !important;
+  }
+
+  .cardhover {
+    width: 100%;
+    max-width: 20rem;
+    margin-bottom: 1rem;
+  }
 }

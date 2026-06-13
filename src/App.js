@@ -7,11 +7,12 @@ import Aboutus from "./components/pages/AboutUs";
 import NotFound from "./components/pages/NotFound";
 
 import GithubState from "./context/github_finder/actions";
+import getBasename from "./getBasename";
 
 const App = () => {
   return (
     <GithubState>
-      <Router>
+      <Router basename={getBasename()}>
         <div className="App">
           <Navbar title="Github Finder" />
           <Routes>

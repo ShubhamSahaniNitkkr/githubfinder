@@ -16,9 +16,8 @@ const Users = () => {
       {loading ? (
         <img
           src={loading_url}
-          className="card-img-top w-25"
+          className="card-img-top w-25 mx-auto d-block"
           alt="Github Finder Loading"
-          style={{ marginLeft: "38%" }}
         />
       ) : (
         <div className="row d-flex justify-content-around">

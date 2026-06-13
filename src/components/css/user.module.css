@@ -1,9 +1,16 @@
 .cardhover {
   width: 20rem;
+  max-width: 100%;
 }
 
 .cardhover:hover {
   border: 5px solid #e5eff1;
   transition: all 0.4s ease;
   -webkit-transition: all 0.4s ease;
+}
+
+@media (max-width: 576px) {
+  .cardhover {
+    width: 100%;
+  }
 }
