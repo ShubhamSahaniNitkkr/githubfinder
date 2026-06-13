@@ -2,7 +2,8 @@
 
 > Full-featured GitHub user search with profile pages, repos list, and follower stats.
 
-![Screenshot](./screenshot.png)
+<img width="2234" height="1169" alt="image" src="https://github.com/user-attachments/assets/898cef71-c59c-4f72-ad64-cff19965e739" />
+
 > Add `screenshot.png` in project root for preview.
 
 ## Purpose
