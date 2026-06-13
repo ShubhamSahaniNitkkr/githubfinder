@@ -32,7 +32,7 @@ const UserItem = ({
 
   return (
     <div className={`card shadow-sm mb-5 bg-white rounded ${styles.cardhover}`}>
-      <Link to={`/Profile/:${login}`}>
+      <Link to={`/Profile/${login}`}>
         <img src={avatar_url} className="card-img-top" alt="..." />
       </Link>
       <div className="card-body">
@@ -72,7 +72,7 @@ const UserItem = ({
         >
           Github
         </a>
-        <Link to={`/Profile/:${login}`} className="card-link">
+        <Link to={`/Profile/${login}`} className="card-link">
           Profile
         </Link>
       </div>

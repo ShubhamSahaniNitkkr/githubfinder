@@ -28,12 +28,11 @@ const GFaction = props => {
 
   const getUserProfile = async username => {
     setloading();
+    const normalizedUsername = username.replace(/^:/, "");
     const res = await axios.get(
-      `https://api.github.com/search/users?q=${
-        username.indexOf(":") > -1 ? username.replace(":", "") : username
-      }`
+      `https://api.github.com/users/${encodeURIComponent(normalizedUsername)}`
     );
-    dispatch({ type: GET_PROFILE, payload: res.data.items[0] });
+    dispatch({ type: GET_PROFILE, payload: res.data });
   };
 
   const setloading = () => dispatch({ type: SET_LOADING });

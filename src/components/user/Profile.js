@@ -1,14 +1,18 @@
 import React, { useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
 import loading_url from "../../imgs/loading.gif";
 import GithubContext from "../../context/github_finder/context";
 
-const Profile = ({ match }) => {
+const Profile = () => {
+  const { username } = useParams();
   const githubContext = useContext(GithubContext);
   const { getUserProfile, userProfile, loading } = githubContext;
   useEffect(() => {
-    getUserProfile(match.params.username);
+    if (username) {
+      getUserProfile(username);
+    }
     //eslint-disable-next-line
-  }, []);
+  }, [username]);
 
   const {
     login,
