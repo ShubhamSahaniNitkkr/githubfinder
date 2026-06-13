@@ -30,7 +30,7 @@ npm install && npm run dev
 
 ## Live Demo
 
-[https://shubhamsahaniNitkkr.github.io/old-basic-projects/projects/githubfinder/](https://shubhamsahaniNitkkr.github.io/old-basic-projects/projects/githubfinder/)
+[https://shubhamsahaniNitkkr.github.io/githubfinder/](https://shubhamsahaniNitkkr.github.io/githubfinder/)
 
 
 ## Performance & UI
